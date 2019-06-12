@@ -1,8 +1,7 @@
 var fs = require("fs");
 var axios = require("axios");
-var keys = require("./keys");
 var moment  = require ("moment");
-
+var keys = require("./keys");
 var Spotify = require("node-spotify-api");
 
 var spotify = new Spotify(keys.spotify);
@@ -14,32 +13,35 @@ var divider = "\n-----------\n\n";
 // function for OMDB
 function movieThis(){
     console.log(`Running movie this for: ${searchTerm}`);
-}
-// build omdb url; use axios to fecth data from omdb/ display via consol.log
+};
+// build omdb url; use axios to fecth data from omdb/
+// e display via console.log
+
 // function for concert
 function concertThis(){
     console.log(`Running concert this for: ${searchTerm}`);
 // moment to format the date, build bandsintown url
 // function for song
-function songThis(){
+function spotifyThisSong(){
     console.log(`Running this song for: ${searchTerm}`);
-}
-// function for readfile
+};
+// use spotify package to search for song data
 
+// display to that page
+// function for readfile
 // read the random.txt
 function doWhatItSays(){
     console.log(`Running do what it says: ${searchTerm}`);
 
     fs.readFile("random.txt", "UTF8", function(err,data){
         if(err) throw err;
-        var fileData= data.split(",")
         console.log(data)
-
+        var fileData= data.split(",")
         command= fileData[0];
         searchTerm = data[1];
         decider();
     })
-}
+};
 // figure out what command and search term is in the file
 // run the appropriate function
 // function to decide what function to run
